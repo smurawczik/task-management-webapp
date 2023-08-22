@@ -32,6 +32,7 @@ export const Login = () => {
           inputRef={emailRef}
           size="small"
           placeholder="Email"
+          defaultValue="sebastian.murawczik@gmail.com"
         />
         <TextField
           variant="outlined"
@@ -39,6 +40,7 @@ export const Login = () => {
           size="small"
           placeholder="Password"
           type="password"
+          defaultValue="11111111"
         />
         <GradientBorderBox>
           <Button
