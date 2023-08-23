@@ -7,32 +7,38 @@ import {
   Drawer,
   List,
   ListItem,
-  ListItemButton,
   ListItemIcon,
   ListItemText,
   Toolbar,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
-import { teal } from "@mui/material/colors";
-import { StyledListItemButton } from "./ListItemButton";
 import { useRouter } from "next/router";
+import { StyledListItemButton } from "./ListItemButton";
+import { SidenavTooltip } from "./Tooltip";
 
 export const Sidenav = () => {
   const router = useRouter();
   const { pathname } = router;
   const user = useAppSelector((state) => state.user);
 
+  const theme = useTheme();
+  const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
+
   if (!user?.email) {
     return null;
   }
+
+  const sidenavWidth = isDesktop ? 200 : 58;
 
   return (
     <Drawer
       variant="permanent"
       sx={{
-        width: 200,
+        width: sidenavWidth,
         flexShrink: 0,
         [`& .MuiDrawer-paper`]: {
-          width: 200,
+          width: sidenavWidth,
           boxSizing: "border-box",
           background: "rgb(22, 30, 41)",
         },
@@ -54,31 +60,49 @@ export const Sidenav = () => {
           }}
         >
           <ListItem disablePadding>
-            <StyledListItemButton selected={pathname === "/board"}>
-              <ListItemIcon>
-                <DeveloperBoardIcon />
-              </ListItemIcon>
-              <ListItemText primary="board" />
-            </StyledListItemButton>
+            <SidenavTooltip
+              title={!isDesktop ? "board" : ""}
+              placement="right"
+              arrow
+            >
+              <StyledListItemButton selected={pathname === "/board"}>
+                <ListItemIcon>
+                  <DeveloperBoardIcon />
+                </ListItemIcon>
+                <ListItemText primary="board" />
+              </StyledListItemButton>
+            </SidenavTooltip>
           </ListItem>
           <ListItem disablePadding>
-            <StyledListItemButton>
-              <ListItemIcon>
-                <AccountTreeIcon />
-              </ListItemIcon>
-              <ListItemText primary="projects" />
-            </StyledListItemButton>
+            <SidenavTooltip
+              title={!isDesktop ? "projects" : ""}
+              placement="right"
+              arrow
+            >
+              <StyledListItemButton>
+                <ListItemIcon>
+                  <AccountTreeIcon />
+                </ListItemIcon>
+                <ListItemText primary="projects" />
+              </StyledListItemButton>
+            </SidenavTooltip>
           </ListItem>
         </List>
         <Box flexGrow={1} />
         <List>
           <ListItem disablePadding>
-            <StyledListItemButton>
-              <ListItemIcon>
-                <SettingsIcon />
-              </ListItemIcon>
-              <ListItemText primary="settings" />
-            </StyledListItemButton>
+            <SidenavTooltip
+              title={!isDesktop ? "settings" : ""}
+              placement="right"
+              arrow
+            >
+              <StyledListItemButton>
+                <ListItemIcon>
+                  <SettingsIcon />
+                </ListItemIcon>
+                <ListItemText primary="settings" />
+              </StyledListItemButton>
+            </SidenavTooltip>
           </ListItem>
         </List>
       </Box>
