@@ -1,10 +1,9 @@
 import { statusesAPI } from "@/api/status";
+import { Status } from "@/types/status";
 import { useEffect, useState } from "react";
 
 export const useStatuses = () => {
-  const [issueStatuses, setIssueStatuses] = useState<Record<string, string>[]>(
-    []
-  );
+  const [issueStatuses, setIssueStatuses] = useState<Status[]>([]);
 
   useEffect(() => {
     const fetchIssueStatuses = async () => {

@@ -1,36 +1,28 @@
 import { useStatuses } from "@/hooks/useStatuses";
+import { useTasks } from "@/hooks/useTasks";
 import Box from "@mui/material/Box";
-import { FC } from "react";
+import { Lane } from "./Lane";
 
-interface BoardProps {
-  issues: Issue[];
-}
-
-interface Issue {
-  id: number;
-  title: string;
-  description: string;
-  status: string;
-}
-
-export const Board: FC<BoardProps> = ({ issues }) => {
+export const Board = () => {
   const { statuses } = useStatuses();
+  const { tasks } = useTasks();
+
+  console.log(statuses, tasks);
 
   return (
-    <Box width="100%" justifyContent="space-between" display="flex">
-      {statuses.map((status) => (
-        <div key={status.id} className="column">
-          <h2>{status.name}</h2>
-          {issues
-            .filter((issue) => issue.status === status.name)
-            .map((issue) => (
-              <div key={issue.id} className="card">
-                <h3>{issue.title}</h3>
-                <p>{issue.description}</p>
-              </div>
-            ))}
-        </div>
-      ))}
+    <Box
+      width="100%"
+      justifyContent="space-between"
+      display="flex"
+      flexGrow={1}
+      gap={2}
+    >
+      {statuses.map((status) => {
+        const tasksByStatus = tasks.filter(
+          (task) => task.status.name === status.name
+        );
+        return <Lane status={status} tasks={tasksByStatus} key={status.id} />;
+      })}
     </Box>
   );
 };
