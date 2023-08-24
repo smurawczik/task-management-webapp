@@ -9,7 +9,6 @@ export const useStatuses = () => {
     const fetchIssueStatuses = async () => {
       try {
         const response = await statusesAPI.statuses();
-        console.log(response.data);
 
         setIssueStatuses(response.data);
       } catch (error) {
