@@ -1,5 +1,5 @@
 import { Login } from "@/components/Login";
-import styles from "@/styles/Home.module.scss";
+import styles from "@/styles/main.module.scss";
 import { Inter } from "next/font/google";
 import Head from "next/head";
 
