@@ -65,7 +65,7 @@ export const Sidenav = () => {
               placement="right"
               arrow
             >
-              <StyledListItemButton>
+              <StyledListItemButton selected={pathname === "/projects"}>
                 <ListItemIcon>
                   <AccountTreeIcon />
                 </ListItemIcon>

@@ -14,6 +14,11 @@ const projectsSlice = createSlice({
     builder.addCase(projectThunks.fetchProjects.fulfilled, (state, action) => {
       state.projects = action.payload;
     });
+    builder.addCase(projectThunks.createProject.fulfilled, (state, action) => {
+      console.log(action.payload);
+
+      // state.projects.push(action.payload);
+    });
   },
 });
 

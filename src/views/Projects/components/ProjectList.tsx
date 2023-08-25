@@ -1,5 +1,5 @@
 import { useAppSelector } from "@/store/hooks";
-import { List, ListItem } from "@mui/material";
+import { List, ListItem, ListItemText } from "@mui/material";
 import { teal } from "@mui/material/colors";
 
 export const ProjectList = () => {
@@ -14,8 +14,12 @@ export const ProjectList = () => {
           sx={{
             backgroundColor: "rgba(255, 255, 255, 0.05)",
             fontSize: ".85rem",
+            cursor: "pointer",
             "&:not(:last-child)": {
               borderBottom: `1px solid ${teal[300]}`,
+            },
+            ":hover": {
+              backgroundColor: "rgba(255, 255, 255, 0.1)",
             },
           }}
           key={project.id}
