@@ -46,7 +46,7 @@ export const useLoggedInUser = () => {
       userFetchStatus === UserFetchStatus.SUCCESS &&
       window.location.pathname === "/"
     ) {
-      router.push("/board");
+      router.push("/projects");
     } else if (
       userFetchStatus === UserFetchStatus.ERROR &&
       window.location.pathname !== "/"

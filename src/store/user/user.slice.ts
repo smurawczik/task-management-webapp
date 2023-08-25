@@ -1,17 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { UserFetchStatus } from "./user.types";
-
-interface UserState {
-  id: string;
-  name: string;
-  email: string;
-  fetchStatus: UserFetchStatus;
-}
+import { UserFetchStatus, UserState } from "./user.types";
 
 const initialState: UserState = {
   id: "",
-  name: "",
+  firstName: "",
+  lastName: "",
   email: "",
+  roles: [],
   fetchStatus: UserFetchStatus.IDLE,
 };
 
@@ -21,13 +16,13 @@ const userSlice = createSlice({
   reducers: {
     setUser: (state, action: PayloadAction<UserState>) => {
       state.id = action.payload.id;
-      state.name = action.payload.name;
+      state.firstName = action.payload.firstName;
       state.email = action.payload.email;
       state.fetchStatus = UserFetchStatus.SUCCESS;
     },
     clearUser: (state) => {
       state.id = "";
-      state.name = "";
+      state.firstName = "";
       state.email = "";
     },
     setUserFetchStatus: (state, action: PayloadAction<UserFetchStatus>) => {

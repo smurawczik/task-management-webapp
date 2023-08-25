@@ -61,20 +61,6 @@ export const Sidenav = () => {
         >
           <ListItem disablePadding>
             <SidenavTooltip
-              title={!isDesktop ? "board" : ""}
-              placement="right"
-              arrow
-            >
-              <StyledListItemButton selected={pathname === "/board"}>
-                <ListItemIcon>
-                  <DeveloperBoardIcon />
-                </ListItemIcon>
-                <ListItemText primary="board" />
-              </StyledListItemButton>
-            </SidenavTooltip>
-          </ListItem>
-          <ListItem disablePadding>
-            <SidenavTooltip
               title={!isDesktop ? "projects" : ""}
               placement="right"
               arrow
@@ -84,6 +70,20 @@ export const Sidenav = () => {
                   <AccountTreeIcon />
                 </ListItemIcon>
                 <ListItemText primary="projects" />
+              </StyledListItemButton>
+            </SidenavTooltip>
+          </ListItem>
+          <ListItem disablePadding>
+            <SidenavTooltip
+              title={!isDesktop ? "board" : ""}
+              placement="right"
+              arrow
+            >
+              <StyledListItemButton selected={pathname === "/board"}>
+                <ListItemIcon>
+                  <DeveloperBoardIcon />
+                </ListItemIcon>
+                <ListItemText primary="board" />
               </StyledListItemButton>
             </SidenavTooltip>
           </ListItem>
