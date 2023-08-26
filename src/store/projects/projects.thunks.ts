@@ -6,6 +6,14 @@ const fetchProjects = createAsyncThunk("projects/fetchProjects", async () => {
   return response.data;
 });
 
+const fetchProject = createAsyncThunk<any, { id: string }>(
+  "projects/fetchProject",
+  async ({ id }) => {
+    const response = await projectsAPI.getProject(id);
+    return response.data;
+  }
+);
+
 const createProject = createAsyncThunk<
   any,
   { name: string; description: string }
@@ -15,6 +23,7 @@ const createProject = createAsyncThunk<
 });
 
 export const projectThunks = {
+  fetchProject,
   fetchProjects,
   createProject,
 };

@@ -9,5 +9,6 @@ export interface Project {
 }
 
 export interface ProjectsState {
-  projects: Project[];
+  list: Project[];
+  project: Project | undefined | null;
 }

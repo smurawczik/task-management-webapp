@@ -1,9 +1,11 @@
 import { useAppSelector } from "@/store/hooks";
 import { List, ListItem, ListItemText } from "@mui/material";
 import { teal } from "@mui/material/colors";
+import { useRouter } from "next/router";
 
 export const ProjectList = () => {
-  const projects = useAppSelector((state) => state.projects.projects);
+  const router = useRouter();
+  const projects = useAppSelector((state) => state.projects.list);
 
   return (
     <List
@@ -21,6 +23,9 @@ export const ProjectList = () => {
             ":hover": {
               backgroundColor: "rgba(255, 255, 255, 0.1)",
             },
+          }}
+          onClick={() => {
+            router.push(`/projects/${project.id}`);
           }}
           key={project.id}
         >

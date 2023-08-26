@@ -3,7 +3,8 @@ import { ProjectsState } from "./projects.types";
 import { projectThunks } from "./projects.thunks";
 
 const initialState: ProjectsState = {
-  projects: [],
+  list: [],
+  project: undefined,
 };
 
 const projectsSlice = createSlice({
@@ -12,12 +13,13 @@ const projectsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(projectThunks.fetchProjects.fulfilled, (state, action) => {
-      state.projects = action.payload;
+      state.list = action.payload;
     });
-    builder.addCase(projectThunks.createProject.fulfilled, (state, action) => {
-      console.log(action.payload);
-
-      // state.projects.push(action.payload);
+    builder.addCase(projectThunks.fetchProject.fulfilled, (state, action) => {
+      state.project = action.payload;
+    });
+    builder.addCase(projectThunks.fetchProject.rejected, (state, action) => {
+      state.project = null;
     });
   },
 });

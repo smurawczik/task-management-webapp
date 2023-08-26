@@ -59,7 +59,7 @@ export const Sidenav = () => {
             },
           }}
         >
-          <ListItem disablePadding>
+          <ListItem disablePadding onClick={() => router.push("/projects")}>
             <SidenavTooltip
               title={!isDesktop ? "projects" : ""}
               placement="right"
@@ -73,7 +73,7 @@ export const Sidenav = () => {
               </StyledListItemButton>
             </SidenavTooltip>
           </ListItem>
-          <ListItem disablePadding>
+          <ListItem disablePadding onClick={() => router.push("/board")}>
             <SidenavTooltip
               title={!isDesktop ? "board" : ""}
               placement="right"
